@@ -23,6 +23,7 @@ Wszystko jest podpięte pod **jeden główny adres e‑mail**:
 
 | Zasób | Link |
 |-------|------|
+| **Strona na żywo (domena)** | **https://hubbarbershop.com** |
 | Repozytorium GitHub | https://github.com/hubbarbershopwro/hubbarbershopwro |
 | Panel Netlify (projekt) | https://app.netlify.com/projects/coruscating-brigadeiros-236c7f/overview |
 | Adres testowy Netlify | https://coruscating-brigadeiros-236c7f.netlify.app |
@@ -34,7 +35,8 @@ Wszystko jest podpięte pod **jeden główny adres e‑mail**:
 
 ## 🌐 Domena
 
-- Domena została **kupiona przez Netlify**.
+- Domena: **hubbarbershop.com**
+- Została **kupiona przez Netlify**.
 - Koszt: **16,99** (rocznie).
 - **Termin odnowienia: 25.06.2027** — opłać przed tą datą, żeby strona nie przestała działać.
 - Zarządzanie domeną: panel Netlify → **Domain management** (w projekcie powyżej).
