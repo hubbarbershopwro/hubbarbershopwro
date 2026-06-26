@@ -9,7 +9,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="HUB Barbershop — Wrocław" />
 <meta property="og:description" content="Strzyżenie, broda i klimat w sercu Wrocławia. Mieszczańska 10a. Rezerwacja online przez Booksy." />
-<meta property="og:image" content="cut-03.jpeg" />
+<meta property="og:image" content="background.webp" />
 <meta name="theme-color" content="#15130e" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,6 +37,30 @@
     font-family:"Space Grotesk", system-ui, sans-serif;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    position:relative;
+  }
+
+  /* ---------- tło hero (wnętrze salonu) ---------- */
+  .site-bg{
+    position:absolute;
+    top:0; left:0; right:0;
+    height:100vh;
+    z-index:0;
+    background:
+      linear-gradient(105deg,
+        rgba(21,19,14,.92) 0%,
+        rgba(21,19,14,.62) 48%,
+        rgba(21,19,14,.30) 100%),
+      linear-gradient(to bottom,
+        rgba(21,19,14,.25) 0%,
+        rgba(21,19,14,.55) 60%,
+        var(--ink) 100%),
+      url("background.webp") center 28% / cover no-repeat;
+    pointer-events:none;
+  }
+  .site-bg::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:160px;
+    background:linear-gradient(to bottom, rgba(21,19,14,0), var(--ink));
   }
 
   .mono{ font-family:"JetBrains Mono", monospace; }
@@ -62,7 +86,7 @@
   @keyframes slide{ to{ background-position:0 51px; } }
 
   /* ---------- układ ---------- */
-  .wrap{ max-width:1080px; margin:0 auto; padding:0 28px 0 42px; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 28px 0 42px; position:relative; z-index:1; }
 
   /* ---------- nagłówek ---------- */
   header{
@@ -161,6 +185,34 @@
   .fact .v{ margin-top:9px; font-size:15px; line-height:1.5; color:var(--bone); }
   .fact .v small{ color:var(--bone-dim); font-size:13px; }
 
+  /* ---------- wnętrze (przestrzeń salonu) ---------- */
+  .space-sec{ padding:96px 0 10px; }
+  .space-lede{ max-width:440px; margin:-12px 0 30px; font-size:16px; line-height:1.6; color:var(--bone-dim); }
+  .space-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .space-card{
+    position:relative; aspect-ratio:3/4; overflow:hidden;
+    border:1px solid var(--line);
+    background:linear-gradient(135deg, var(--ink-2), #2a261c);
+  }
+  .space-card img{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; filter:grayscale(10%) contrast(1.04);
+    transition:transform .6s ease, filter .6s ease;
+  }
+  .space-card:hover img{ transform:scale(1.04); filter:grayscale(0%); }
+  .space-card::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(to top, rgba(10,9,6,.78) 0%, rgba(10,9,6,0) 52%);
+  }
+  .space-card figcaption{
+    position:absolute; left:18px; bottom:16px; z-index:2;
+    font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--bone);
+  }
+  .space-card figcaption small{
+    display:block; margin-top:5px; letter-spacing:.04em;
+    text-transform:none; color:var(--bone-dim); font-size:12px;
+  }
+
   /* ---------- galeria ---------- */
   .gallery-sec{ padding:90px 0 30px; }
   .sec-head{ display:flex; align-items:baseline; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:30px; }
@@ -228,12 +280,15 @@
     .fact:first-child{ border-top:none; }
     .grid{ grid-template-columns:1fr 1fr; gap:10px; }
     .tile.wide{ grid-column:span 2; }
+    .space-grid{ gap:10px; }
+    .site-bg{ height:82vh; background-position:center 22%; }
     .pole{ width:9px; }
   }
 
   @media (max-width:460px){
     .grid{ grid-template-columns:1fr; }
     .tile.wide{ grid-column:span 1; }
+    .space-grid{ grid-template-columns:1fr; }
   }
 
   @media (prefers-reduced-motion:reduce){
@@ -247,6 +302,9 @@
 
   <!-- pasek barberski biegnący przy lewej krawędzi -->
   <div class="pole" aria-hidden="true"></div>
+
+  <!-- tło: wnętrze salonu za sekcją hero -->
+  <div class="site-bg" aria-hidden="true"></div>
 
   <div class="wrap">
 
@@ -291,6 +349,28 @@
           <div class="k">Godziny</div>
           <div class="v">Pon–Sob<br><small>sprawdź dostępność w Booksy</small></div>
         </div>
+      </div>
+    </section>
+
+    <!-- ===================== WNĘTRZE ===================== -->
+    <section class="space-sec" id="wnetrze">
+      <div class="sec-head">
+        <h2 class="sec-title">Wnętrze</h2>
+        <a class="sec-link" href="https://www.google.com/maps/search/?api=1&query=Mieszcza%C5%84ska+10a+Wroc%C5%82aw" target="_blank" rel="noopener">Mieszczańska 10a →</a>
+      </div>
+      <p class="space-lede">
+        Ciemne ściany, kamienne popiersia i mosiężne światło — miejsce,
+        w którym strzyżenie staje się rytuałem. Wpadnij na kawę przed wizytą.
+      </p>
+      <div class="space-grid">
+        <figure class="space-card">
+          <img src="lounge.webp" alt="Strefa oczekiwania — skórzane sofy i wystrój w stylu greckim" loading="lazy" decoding="async" />
+          <figcaption>Strefa oczekiwania<small>Skóra, zieleń, miękkie światło</small></figcaption>
+        </figure>
+        <figure class="space-card">
+          <img src="interior.webp" alt="Detale wnętrza — popiersia bóstw i mosiężny trójząb" loading="lazy" decoding="async" />
+          <figcaption>Detale<small>Kamień, mosiądz, charakter</small></figcaption>
+        </figure>
       </div>
     </section>
 
