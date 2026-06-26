@@ -1,0 +1,10 @@
+[build]
+  publish = "."
+
+# Statyczna strona — brak kroku budowania.
+# Netlify serwuje index.html z katalogu głównego.
+
+[[headers]]
+  for = "/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
